@@ -12,7 +12,7 @@ export default function Home({ products }) {
                             borderBottom: "1px solid black",
                         }}
                     >
-                        {product.name} - {product.price}
+                        {product.name} - {product.price} !
                     </h1>
                 </Link>
             ))}
