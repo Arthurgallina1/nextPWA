@@ -1,4 +1,5 @@
 import { useRouter } from "next/router";
+import Footer from "../../components/Footer";
 
 export default function Product({ product }) {
     const router = useRouter();
@@ -8,6 +9,7 @@ export default function Product({ product }) {
             <h1>{product?.name}</h1>
             <h5>{product?.price}</h5>
             <span onClick={() => router.back()}>Click here to go back</span>
+            <Footer />
         </div>
     );
 }
