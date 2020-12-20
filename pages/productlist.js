@@ -4,7 +4,7 @@ export default function Home({ products }) {
     return (
         <div>
             {products.map((product) => (
-                <Link href={`${product.id}`}>
+                <Link href={`products/${product.price}`}>
                     <h1 key={product.id}>
                         {product.name} - {product.price}
                     </h1>
@@ -15,7 +15,7 @@ export default function Home({ products }) {
 }
 
 export const getStaticProps = async () => {
-    const response = await fetch("http://localhost:8000/products");
+    const response = await fetch("https://backendtalkai.tech/products/");
     const data = await response.json();
     return {
         props: {
