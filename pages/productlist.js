@@ -4,17 +4,18 @@ export default function Home({ products }) {
     return (
         <div>
             {products?.map((product) => (
-                <Link href={`products/${product.price}`}>
-                    <h1
-                        key={product.id}
-                        style={{
-                            cursor: "pointer",
-                            borderBottom: "1px solid black",
-                        }}
-                    >
-                        {product.name} - {product.price} !
-                    </h1>
-                </Link>
+                <div key={product.id}>
+                    <Link href={`products/${product.price}`}>
+                        <h1
+                            style={{
+                                cursor: "pointer",
+                                borderBottom: "1px solid black",
+                            }}
+                        >
+                            {product.name} - {product.price} !
+                        </h1>
+                    </Link>
+                </div>
             ))}
         </div>
     );
