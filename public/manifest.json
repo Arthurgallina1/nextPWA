@@ -1,7 +1,7 @@
 {
     "theme_color": "#63503d",
     "background_color": "#f69435",
-    "display": "fullscreen",
+    "display": "standalone",
     "scope": "/",
     "start_url": "/",
     "name": "Next PWA Teest",
