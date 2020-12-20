@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styles from "../styles/Home.module.css";
 import Nav from "../components/nav";
 import Grid from "@material-ui/core/Grid";
@@ -17,6 +17,19 @@ export default function Home() {
             }
         }
     };
+
+    useEffect(() => {
+        navigator.geolocation.getCurrentPosition(
+            function (position) {
+                //   console.log("Latitude is :", position.coords.latitude);
+                console.log("Longitude is :", position.coords.longitude);
+            },
+            function (err) {
+                console.log(err);
+            },
+            { enableHighAccuracy: true, timeout: 5000, maximumAge: 10000 }
+        );
+    }, []);
     return (
         <div className={styles.container}>
             <Nav />
