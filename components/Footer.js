@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 import { useRouter } from "next/router";
 import { makeStyles } from "@material-ui/core";
 import BottomNavigation from "@material-ui/core/BottomNavigation";
@@ -31,14 +32,22 @@ export default function SimpleBottomNavigation() {
             value={value}
             onChange={(event, newValue) => {
                 setValue(newValue);
-                // router.push("/");
             }}
             showLabels
             className={classes.root}
         >
-            <BottomNavigationAction label='Home' icon={<RestoreIcon />} />
-            <BottomNavigationAction label='Loja' icon={<FavoriteIcon />} />
-            <BottomNavigationAction label='Outro' icon={<LocationOnIcon />} />
+            <Link href='/'>
+                <BottomNavigationAction label='Home' icon={<RestoreIcon />} />
+            </Link>
+            <Link href='/productlist'>
+                <BottomNavigationAction label='Loja' icon={<FavoriteIcon />} />
+            </Link>
+            <Link href='/outro'>
+                <BottomNavigationAction
+                    label='Outro'
+                    icon={<LocationOnIcon />}
+                />
+            </Link>
         </BottomNavigation>
     );
 }
