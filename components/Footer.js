@@ -1,53 +1,49 @@
 import React from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { makeStyles } from "@material-ui/core";
-import BottomNavigation from "@material-ui/core/BottomNavigation";
-import BottomNavigationAction from "@material-ui/core/BottomNavigationAction";
-import RestoreIcon from "@material-ui/icons/Restore";
-import FavoriteIcon from "@material-ui/icons/Favorite";
-import LocationOnIcon from "@material-ui/icons/LocationOn";
 
-const useStyles = makeStyles({
-    root: {
-        width: "100%",
-        position: "fixed",
-        left: 0,
-        bottom: 0,
-    },
-});
-
-const navigationObject = {
-    0: "/",
-    1: "/productlist",
-    2: "/outro",
+const rootStyle = {
+    width: "100%",
+    position: "fixed",
+    left: 0,
+    bottom: 0,
+    display: "flex",
+    justifyContent: "space-evenly",
+    padding: "0 0 3px",
+    marginBottom: 10,
 };
+
+const activeStyle = {
+    color: "red",
+};
+const navigation = [
+    { path: "/", name: "Home" },
+    { path: "/productlist", name: "Loja" },
+    { path: "/outro", name: "Outro" },
+];
 
 export default function SimpleBottomNavigation() {
     const router = useRouter();
-    const classes = useStyles();
-    const [value, setValue] = React.useState(0);
+    const path = router.pathname;
+
+    const spanStyle = (current) => {
+        if (path == current.path) {
+            return {
+                color: "red",
+            };
+        }
+        return {
+            color: "gray",
+        };
+    };
+
     return (
-        <BottomNavigation
-            value={value}
-            onChange={(event, newValue) => {
-                setValue(newValue);
-            }}
-            showLabels
-            className={classes.root}
-        >
-            <Link href='/'>
-                <BottomNavigationAction label='Home' icon={<RestoreIcon />} />
-            </Link>
-            <Link href='/productlist'>
-                <BottomNavigationAction label='Loja' icon={<FavoriteIcon />} />
-            </Link>
-            <Link href='/outro'>
-                <BottomNavigationAction
-                    label='Outro'
-                    icon={<LocationOnIcon />}
-                />
-            </Link>
-        </BottomNavigation>
+        <div style={rootStyle}>
+            {navigation.map((item) => (
+                <Link href={item.path} key={item.name}>
+                    <span style={spanStyle(item)}>{item.name}</span>
+                </Link>
+            ))}
+        </div>
     );
 }

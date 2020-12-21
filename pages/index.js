@@ -5,6 +5,7 @@ import Grid from "@material-ui/core/Grid";
 import Box from "@material-ui/core/Box";
 import { IconButton, makeStyles } from "@material-ui/core";
 import PhotoCameraRoundedIcon from "@material-ui/icons/PhotoCameraRounded";
+import Footer from "../components/Footer";
 
 export default function Home() {
     const [source, setSource] = useState("");
@@ -75,6 +76,7 @@ export default function Home() {
                         </Grid>
                     </Grid>
                 </div>
+                <Footer />
             </main>
         </div>
     );
